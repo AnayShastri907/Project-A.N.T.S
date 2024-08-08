@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gantt Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gantt Chart</h1>
+    <img src="{{ graph_url }}" alt="Gantt Chart" onerror="this.onerror=null; this.src='/static/placeholder.png';">
+    <br>
+    <a href="{{ url_for('display_excel', filename=session.get('filename')) }}">Go Back</a>
+</body>
+</html>
