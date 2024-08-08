@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>S-Curve</title>
+    <script>
+        function addCashInjectionField() {
+            // Create new input fields for time point and cash injection
+            var container = document.getElementById('cash-injection-fields');
+            var newField = document.createElement('div');
+            newField.innerHTML = `
+                <div>
+                    <label>Time Point:</label>
+                    <input type="number" name="new_time_points[]" required>
+                    <label>Cash Injection:</label>
+                    <input type="number" step="0.01" name="new_cash_injections[]" required>
+                </div>
+            `;
+            container.appendChild(newField);
+        }
+    </script>
+</head>
+<body>
+    <h1>Generate S-Curve</h1>
+
+    <form action="{{ url_for('generate_s_curve') }}" method="post">
+        <div>
+            <h2>Existing Cash Injections</h2>
+            {% for time_point, amount in cash_injections.items() %}
+                <div>
+                    <label>Time Point:</label>
+                    <input type="number" name="time_points[]" value="{{ time_point }}" required>
+                    <label>Cash Injection:</label>
+                    <input type="number" step="0.01" name="cash_injections[]" value="{{ amount }}" required>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="cash-injection-fields">
+            <h2>Add New Cash Injection</h2>
+            <div>
+                <label>Time Point:</label>
+                <input type="number" name="new_time_points[]" required>
+                <label>Cash Injection:</label>
+                <input type="number" step="0.01" name="new_cash_injections[]" required>
+            </div>
+        </div>
+
+        <button type="button" onclick="addCashInjectionField()">Add Another Cash Injection</button>
+        <br><br>
+        <button type="submit">Generate S-Curve</button>
+    </form>
+</body>
+</html>
