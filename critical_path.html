@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Critical Path</title>
+</head>
+<body>
+    <h1>Critical Path</h1>
+    <p>Critical Path: {{ data.critical_path }}</p>
+    <h2>Start and Finish Times</h2>
+    <h3>Early Start Times</h3>
+    <pre>{{ data.early_start }}</pre>
+    <h3>Late Start Times</h3>
+    <pre>{{ data.late_start }}</pre>
+    <h3>Early Finish Times</h3>
+    <pre>{{ data.early_finish }}</pre>
+    <h3>Late Finish Times</h3>
+    <pre>{{ data.late_finish }}</pre>
+    <h2>Floats</h2>
+    <h3>Total Float</h3>
+    <pre>{{ data.total_float }}</pre>
+    <h3>Free Float</h3>
+    <pre>{{ data.free_float }}</pre>
+    <a href="/display_excel/{{ session['filename'] }}">Go Back</a>
+</body>
+</html>
